@@ -1,28 +1,22 @@
+const form = document.querySelector('form[name="contact"]');
+if (form) {
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const fd = new FormData(form);
+    // Netlify requires 'form-name' in the POST body
+    if (!fd.get('form-name')) fd.set('form-name', form.getAttribute('name'));
 
-// Mobile nav toggle
-const toggle = document.querySelector('.nav-toggle');
-const nav = document.getElementById('site-nav');
-if (toggle && nav){
-  toggle.addEventListener('click', () => {
-    const open = nav.classList.toggle('open');
-    toggle.setAttribute('aria-expanded', String(open));
+    try {
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(fd).toString()
+      });
+      // simple success UX
+      form.reset();
+      alert('Thanks! Your message was sent.'); // replace with a nicer UI if you want
+    } catch (err) {
+      alert('Sorry — something went wrong. Please try again or email me directly.');
+    }
   });
 }
-
-// Dialog modals
-document.querySelectorAll('.more').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const id = btn.getAttribute('data-dialog');
-    const dlg = document.getElementById(id);
-    if (dlg && typeof dlg.showModal === 'function') dlg.showModal();
-  });
-});
-document.querySelectorAll('.project-dialog .close').forEach(btn => {
-  btn.addEventListener('click', e => {
-    const dlg = e.target.closest('dialog');
-    if (dlg && typeof dlg.close === 'function') dlg.close();
-  });
-});
-
-// Year in footer
-document.getElementById('year').textContent = new Date().getFullYear();
