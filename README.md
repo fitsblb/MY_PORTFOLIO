@@ -1,4 +1,4 @@
-# Fitsum Portfolio (Redesign)
+# Fitsum Portfolio
 
 A clean, modern, and accessible portfolio for Fitsum — Data Scientist & ML Engineer.
 
