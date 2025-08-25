@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://fitsblb.github.io/portfolio/sitemap.xml
+Sitemap: https://venerable-tiramisu-1fee6b.netlify.app/sitemap.xml
