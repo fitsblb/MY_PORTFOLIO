@@ -108,7 +108,7 @@
         <p>
           I’m Fitsum, a Toronto-based Data Scientist with a strong foundation in <em>machine learning, NLP, and MLOps</em>.
           I enjoy turning messy, real-world data into models that actually ship. Recently, I’ve
-          built a BERT-powered fraud-signal classifier, an EPL match-outcome model with rolling features, and an
+          built a BERT-powered Text classifier, an EPL match-outcome model with rolling features, and an
           MLflow-tracked regression service. I value clarity, reproducibility, and measurable impact.
         </p>
       </div>
@@ -437,26 +437,41 @@
       <div class="container narrow">
         <h2 id="contact-title" class="section-title">Contact</h2>
         <p>Interested in collaborating or hiring? I’m open to full-time roles and impactful projects.</p>
-        <form class="contact-form" name="contact" method="POST" data-netlify="true">
-          <input type="hidden" name="form-name" value="contact">
-          <div class="form-row">
-            <label for="name">Name</label>
-            <input id="name" name="name" type="text" autocomplete="name" required placeholder="Your name">
-          </div>
-          <div class="form-row">
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" autocomplete="email" required placeholder="you@example.com">
-          </div>
-          <div class="form-row">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" required placeholder="How can I help?"></textarea>
-          </div>
-          <div class="form-actions">
-            <button type="submit" class="btn btn-primary">Send</button>
-            <a class="btn btn-outline" href="mailto:fitsumbahlbi@gmail.com">Email directly</a>
-          </div>
-          <p class="form-note">Tip: You can wire this to Netlify Forms or Formspree; see README.</p>
-        </form>
+    <form
+      name="contact"
+      method="POST"
+      netlify
+      netlify-honeypot="bot-field"
+      action="/thanks/"
+    >
+      <input type="hidden" name="form-name" value="contact">
+      <!-- Honeypot field for bots (hidden from real users) -->
+      <p class="sr-only">
+        <label>Don’t fill this out if you’re human:
+          <input name="bot-field" />
+        </label>
+      </p>
+
+      <div class="form-row">
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" autocomplete="name" required placeholder="Your name">
+      </div>
+      <div class="form-row">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" autocomplete="email" required placeholder="you@example.com">
+      </div>
+      <div class="form-row">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" required placeholder="How can I help?"></textarea>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Send</button>
+        <a class="btn btn-outline" href="mailto:fitsumbahlbi@gmail.com">Email directly</a>
+      </div>
+      <p class="form-note">Your message goes straight to my Netlify inbox. I’ll be in touch soon.</p>
+    </form>
+</form>
+
       </div>
     </section>
   </main>
